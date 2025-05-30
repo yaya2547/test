@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>AR 多圖影片播放</title>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.5.0/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+    <a-scene
+      mindar-image="imageTargetSrc: targets.mind"
+      color-space="sRGB"
+      embedded
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: true"
+    >
+      <a-assets>
+        <video id="video1" src="v1.mp4" loop crossorigin="anonymous" playsinline webkit-playsinline preload="auto"></video>
+        <video id="video2" src="v2.mp4" loop crossorigin="anonymous" playsinline webkit-playsinline preload="auto"></video>
+        <video id="video3" src="v3.mp4" loop crossorigin="anonymous" playsinline webkit-playsinline preload="auto"></video>
+      </a-assets>
+
+      <!-- target 0：第一張圖 -->
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-video src="#video1" width="1.5" height="0.85" position="0 0 0"></a-video>
+      </a-entity>
+
+      <!-- target 1：第二張圖 -->
+      <a-entity mindar-image-target="targetIndex: 1">
+        <a-video src="#video2" width="1.5" height="0.85" position="0 0 0"></a-video>
+      </a-entity>
+
+      <!-- target 2：第三張圖 -->
+      <a-entity mindar-image-target="targetIndex: 2">
+        <a-video src="#video3" width="1.5" height="0.85" position="0 0 0"></a-video>
+      </a-entity>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+    </a-scene>
+  </body>
+</html>
