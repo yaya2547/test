@@ -2,9 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>AR 多圖影片播放</title>
+    <title>AR多圖掃描播放</title>
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.5.0/dist/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+    </style>
   </head>
   <body>
     <a-scene
@@ -13,6 +20,7 @@
       embedded
       vr-mode-ui="enabled: false"
       device-orientation-permission-ui="enabled: true"
+      renderer="colorManagement: true, physicallyCorrectLights"
     >
       <a-assets>
         <video id="video1" src="v1.mp4" loop crossorigin="anonymous" playsinline webkit-playsinline preload="auto"></video>
@@ -20,17 +28,17 @@
         <video id="video3" src="v3.mp4" loop crossorigin="anonymous" playsinline webkit-playsinline preload="auto"></video>
       </a-assets>
 
-      <!-- target 0：第一張圖 -->
+      <!-- target 0：肥機器人 -->
       <a-entity mindar-image-target="targetIndex: 0">
         <a-video src="#video1" width="1.5" height="0.85" position="0 0 0"></a-video>
       </a-entity>
 
-      <!-- target 1：第二張圖 -->
+      <!-- target 1：呼拉圈 -->
       <a-entity mindar-image-target="targetIndex: 1">
         <a-video src="#video2" width="1.5" height="0.85" position="0 0 0"></a-video>
       </a-entity>
 
-      <!-- target 2：第三張圖 -->
+      <!-- target 2：站立機器人 -->
       <a-entity mindar-image-target="targetIndex: 2">
         <a-video src="#video3" width="1.5" height="0.85" position="0 0 0"></a-video>
       </a-entity>
